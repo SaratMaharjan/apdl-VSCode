@@ -13,18 +13,7 @@
 	"foldingStartMarker": "^\\s*\\*(?i)(if|do|dowhile|!\\sende).*\\s*$",
 	"foldingStopMarker": "^\\s*\\*(?i)(endif|enddo|!\\sanfang).*\\s*$",
 
-	"patterns": [{
-			"include": "#general"
-		},
-
-		{
-			"include": "#variable"
-		},
-
-		{
-			"include": "#comment_line"
-		},
-
+	"patterns": [
 		{
 			"include": "#string_single"
 		},
@@ -34,26 +23,28 @@
 		},
 
 		{
-			"include": "#keywords1"
+			"include": "#keywords"
 		},
 
 		{
-			"include": "#keywords2"
+			"include": "#macros"
 		},
-		{
-			"include": "#keywords3"
-		},
+
 		{
 			"include": "#elementTypes"
 		},
 		{
 			"include": "#numbers"
 		},
-		{
-			"include": "#operators"
-		},
+
 		{
 			"include": "#special"
+		},
+		{
+			"include": "#general"
+		},
+		{
+			"include": "#operators"
 		}
 
 	],
@@ -72,8 +63,13 @@
 		},
 
 		"variable": {
-			"match": "(\\$|\\-\\-)[A-Za-z0-9_-]+\\b",
-			"name": "variable.apdl"
+			"name": "variable.apdl",
+			"match": "(\\$|\\-\\-)[A-Za-z0-9_-]+\\b"
+		},
+
+		"variable_parameter": {
+			"name": "variable.parameter.apdl",
+			"match": "\\b(?i)(elem|node|ename|s|u|r|a|mnloc|mxloc|mat|real|type|pres|forc|defa)\\b"
 		},
 
 		"comment_line": {
@@ -97,24 +93,115 @@
 			"end": "\""
 		},
 
-		"keywords1": {
-			"name": "keyword.asterisk.apdl",
-			"match": "^\\s*(?i)\\*(abbr|abb|afun|afu|ask|cfclos|cfclo|cfcl|cfc|cfopen|cfope|cfop|cfo|cfwrite|cfwrit|cfwri|cfwr|cfw|create|creat|crea|cre|cycle|cycl|cyc|del|dim|do|dowhile|else|elseif|end|enddo|endif|eval|eva|exit|exi|get|go|if|list|lis|mfouri|mfour|mfou|mfo|mfun|mfu|mooney|moone|moon|moo|moper|mope|mop|msg|repeat|repea|repe|rep|set|status|statu|stat|sta|tread|trea|tre|ulib|uli|use|vabs|vab|vcol|vco|vcum|vcu|vedit|vedi|ved|vfact|vfac|vfa|vfill|vfil|vfi|vfun|vfu|vget|vge|vitrp|vitr|vit|vlen|vle|vmask|vmas|vma|voper|vope|vop|vplot|vplo|vpl|vput|vpu|vread|vscfun|vstat|vwrite)\\b"
+		"keywords": {
+			"patterns": [{
+					"include": "#keywords_a_e"
+				},
+				{
+					"include": "#keywords_f_j"
+				},
+				{
+					"include": "#keywords_k_n"
+				},
+				{
+					"include": "#keywords_o_p"
+				},
+				{
+					"include": "#keywords_q_s"
+				},
+				{
+					"include": "#keywords_t_z"
+				},
+				{
+					"include": "#keywords_multiline"
+				},
+				{
+					"include": "#keywords_undocumented"
+				},
+				{
+					"include": "#keywords_new"
+				},
+				{
+					"include": "#keywords_control"
+				},
+				{
+					"include": "#keywords_special"
+				},
+				{
+					"include": "#keywords_processor"
+				},
+				{
+					"include": "#variable_parameter"
+				}
+			]
 		},
 
-		"keywords2": {
-			"name": "keyword.slash.apdl",
-			"match": "^\\s*(?i)/(an3d|anfile|angl?e?|annot|anum|anu|assign|assig|assi|ass|auto|aut|aux12|aux15|aux2|axlab|axla|axl|batch|batc|bat|clabel|clabe|clab|cla|clea?r?|clog|clo|cmap|cma|color|colo|col|config|contour|copy|cop|cplane|cplan|cpla|cpl|ctype|ctyp|cty|cval|cva|delete|delet|dele|del|dev|devdisp|device|dist|dis|dscale|dscal|dsca|dsc|dv3d|dv3|edge|edg|efacet|eface|efac|efa|eof|erase|eras|era|eshape|exit|expand|expan|expa|exp|facet|face|fac|fdele|fdel|fde|filname|focus|focu|foc|format|forma|form|for|ftype|ftyp|fty|gcmd|gcm|gcolumn|gcolum|gcolu|gcol|gco|gfile|gfil|gfi|gformat|gforma|gform|gfor|gfo|gline|glin|gli|gmarker|gmarke|gmark|gmar|gma|go|golist|golis|goli|gol|gopr|gop|graphics|graphic|graphi|graph|grap|gra|gresume|gresum|gresu|gres|gre|grid|gri|gropt|grop|gro|grtyp|grty|grt|gsave|gsav|gsa|gst|gthk|gth|gtype|gtyp|gty|header|heade|head|hea|input|larc|lar|light|ligh|lig|line|lin|lspec|lspe|lsp|lsymbol|lsymbo|lsymb|lsym|lsy|menu|men|mplib|mpli|mpl|mrep|mre|mstart|mstar|msta|mst|nerr|ner|noerase|nolist|nolis|noli|nol|nopr|nop|normal|norma|norm|nor|number|numbe|numb|num|opt|output|page|pag|pbc|pbf|pcircle|pcircl|pcirc|pcir|pci|pcopy|pcop|pco|plopts|plopt|plop|plo|pmacro|pmacr|pmac|pma|pmeth|pmet|pme|pmore|pmor|pmo|pnum|pnu|polygon|polygo|polyg|poly|pol|post1|post26|prep7|psearch|psf|pspec|pstatus|pst|psymb|psym|psy|pwedge|pwedg|pwed|pwe|quit|qui|ratio|rati|rat|rename|renam|rena|ren|replot|replo|repl|rep|reset|rese|res|rgb|runst|runs|run|seclib|secli|secl|sec|seg|shade|shad|sha|show|showdisp|shrink|shrin|shri|shr|solut?i?o?n?|sscale|status|statu|stitle|stitl|stit|sti|syp|sys|tee|title|tlabel|triad|trlcy|trlc|trl|tspec|tspe|tsp|txtre|txtr|txt|type|typ|ucmd|ucm|ui|uis|units|unit|uni|user|use|vcone|vcon|vco|view|vie|vscale|vscal|vsca|vsc|vup|wait|wai|window|windo|wind|win|xfrm|xfr|xrange|xrang|xran|xra|yrange|yrang|yran|yra|zoom|zoo)\\b"
-		},
-
-		"keywords3": {
+		"keywords_a_e": {
 			"name": "keyword.command.apdl",
-			"match": "^\\s*(?i)(a|aadd|aatt|abbres|abbsav|abbsa|abbs|abs|accat|acca|acel|aclear|adapt|adap|add|addam|adda|adele|adel|adgl|adrag|adra|aesize|aesiz|aesi|afillt|afill|afil|aflist|aflis|afli|afsurf|afsur|afsu|agen|aglue|aglu|aina|ainp|ainv|al|alist|allsel|alpfill|alphad|alpha|alph|amap|amesh|ames|ancntr|ancnt|ancn|ancut|ancu|andata|andat|anda|andscl|andsc|ands|andyna|andyn|andy|anflow|anflo|anfl|anharm|anhar|anha|anim|anisos|aniso|anis|anmode|anmod|anmo|anorm|anor|antime|antim|anti|antype|antyp|anty|aoffs?t?|aovlap|aovla|aovl|aplot|aplo|append|appen|appe|aptn|arclen|arcle|arcl|arcollapse|arcollaps|arcollap|arcolla|arcoll|arcol|arco|arctrm|arctr|arct|ardetach|ardetac|ardeta|ardet?|areas?|arefi?n?e?|areverse|arevers|arever|areve|arev|arfill|arfil|arfi|armerge|armerg|armer|arme|arotat|arota|arot|arscale|arscal|arsca|arsc|arsplit|arspli|arspl|arsp|arsym|arsy|asba|asbl|asbv|asbw|asel|askin|aski|asll|aslv|asub|asum|atan|atran|atra|atype|atyp|autots|autot|auto|avprin|avpri|avpr|avres|avre|bellow|bend|betad|bf|bfa|bfadele|bfalist|bfalis|bfali|bfal|bfcum|bfcu|bfdele|bfdel|bfde|bfe|bfecum|bfecu|bfec|bfedele|bfedel|bfede|bfed|bfelist|bfelis|bfeli|bfel|bfescal|bfesca|bfesc|bfes|bfint|bfin|bfk|bfkdele|bfkdel|bfkde|bfkd|bfklist|bfklis|bfkli|bfkl|bfl|bfldele|bfldel|bflde|bfld|bflist|bflis|bfli|bfllist|bfllis|bflli|bfll|bfscale|bfscal|bfsca|bfsc|bftran|bftra|bftr|bfunif|bfuni|bfun|bfv|bfvdele|bfvdel|bfvde|bfvd|bfvlist|bfvlis|bfvli|bfvl|bioopt|bioop|bioo|biot|blc4|blc5|block|bloc|bool|boptn|bopt|branch|branc|bran|bsplin|bspli|bspl|btol|bucopt|bucop|buco|calc|cbdof|cbdo|cdread|cdwrite|ce|cecmod|cecyc|cedele|cedel|cede|ceintf|ceint|cein|celist|celis|celi|center|cente|cent|ceqn|cerig|cesgen|cfact|cgloc|cgomga|check|chec|chkmsh|chkms|chkm|circle|circl|circ|clocal|clog|clrmshln|clrmshl|clrmsh|clrms|clrm|cm|cmatrix|cmatri|cmatr|cmat|cmdele|cmdel|cmde|cmedit|cmedi|cmed|cmgrp|cmgr|cmlist|cmlis|cmli|cmplot|cmplo|cmsel|cnvtol|con4|cone|conjug|couple|coup|coval|cp|cpcyc|cpdele|cpde|cpintf|cplgen|cplge|cplg|cplist|cplis|cpli|cpngen|cpnge|cpng|cpsgen|cpsge|cpsg|cqc|crplim|crpli|crpl|cs|cscir|csci|csdele|csdel|csde|cskp|cslist|cslis|csli|cswpla|cswpl|cswp|csys|curr2d|curr2|curr|cutcontrol|cutcontro|cutcontr|cutcont|cutcon|cutco|cutc|cvar|cycgen|cycge|cycg|cycsol|cycso|cycs|cyl4|cyl5|cylind|cylin|cyli|d|da|dadele|dadel|dade|dalist|dalis|dali|damorph|damorp|damor|damo|data|datadef|dcgomg|dcgom|dcgo|dcum|ddele|ddel|deact|deac|define|defin|defi|deltim|delti|delt|demorph|demorp|demor|demo|deriv|deri|desize|desiz|desi|desol|deso|detab|deta|dig|digit|digi|display|displa|displ|disp|dk|dkdele|dkdel|dkde|dklist|dklis|dkli|dl|dldele|dldel|dlde|dlist|dlis|dllist|dllis|dlli|dmove|dmov|dmprat|dmpra|dmpr|dnsol|dnso|dof|dofsel|dofse|dofs|domega|domeg|dome|dscale|dscal|dsca|dset|dsum|dsurf|dsur|dsym|dsys|dtran|dtra|dump|dvmorph|dvmorp|dvmor|dvmo|dynopt|dynop|dyno|e|ealive|ealiv|eali|edadapt|edadap|edada|edad|edbound|edboun|edbou|edbo|edbvis|edbvi|edbv|edcadapt|edcadap|edcada|edcad|edca|edcdele|edcdel|edcde|edcd|edcgen|edcge|edcg|edclist|edclis|edcli|edcl|edcontact|edcontac|edconta|edcont|edcon|edco|edcpu|edcp|edcrb|edcr|edcsc|edcs|edcts|edct|edcurve|edcurv|edcur|edcu|eddamp|eddam|edda|eddrelax|eddrela|eddrel|eddre|eddr|edele|edel|edenergy|edenerg|edener|edene|eden|edfplot|edfplo|edfpl|edfp|edhgls|edhgl|edhg|edhist|edhis|edhi|edhtime|edhtim|edhti|edht|edint|edin|edivelo|edivel|edive|ediv|edlcs|edlc|edload|edloa|edlo|edmp|ednb|edndtsd|edndts|edndt|ednd|ednrot|ednro|ednr|edopt|edop|edout|edou|edpart|edpar|edpa|edpc|edpl|edread|edrea|edre|edrst|edrs|edshell|edshel|edshe|edsh|edsolv|edsol|edso|edstart|edstar|edsta|edst|edtp|edweld|edwel|edwe|edwrite|edwrit|edwri|edwr|egen|eintf|eint|ekill|ekil|elem|elist|elis|emagerr|emager|emage|emag|emf|emid|emis|emodif|emodi|emod|emore|emor|emsym|emsy|emunit|emuni|emun|en|engen|enge|enorm|enor|ensym|ensy|eorient|eorien|eorie|eori|eplot|eplo|eqslv|eqsl|erase|eras|eread|erea|erefine|erefin|erefi|eref|eresx|eres|ernorm|ernor|erno|errang|erran|erra|esel|esize|esla|esll|esln|eslv|esol|esort|essolv|esso|estif|esurf|esym|esys|et|etable|etchg|etch|etdele|etlist|etype|etyp|eusort|ewrite|exp|expand|expass|expsol|expso|exps|extopt|extop|exto|extrem|extre|extr|f|fatigue|fatigu|fatig|fati|fc|fcum|fdele|fdel|fe|febody|febod|febo|fecons|fecon|feco|fefor|fefo|felist|felis|feli|fesurf|fesur|fesu|file|fileaux2|filedisp|fill|filldata|finis?h?|fitem|fite|fk|fkdele|fkdel|fkde|fklist|fklis|fkli|fl|flange|flang|flan|fldata|fldata1|fldata10|fldata11|fldata12|fldata13|fldata14|fldata15|fldata16|fldata17|fldata18|fldata19|fldata2|fldata20|fldata20a|fldata21|fldata22|fldata23|fldata24|fldata24a|fldata24b|fldata24c|fldata24d|fldata25|fldata26|fldata27|fldata28|fldata29|fldata3|fldata30|fldata31|fldata32|fldata33|fldata34|fldata35|fldata36|fldata4|fldata4a|fldata5|fldata6|fldata7|fldata8|fldata9|flist|flis|fllist|fllis|flli|flocheck|flochec|floche|floch|floc|flotran|flotra|flotr|flot|flread|flrea|flre|flst|fluxv|flux|fmagbc|fmagsum|for2d|for2|force|forc|form|fp|fplist|fplis|fpli|freq|fs|fscale|fscal|fsca|fsdele|fsdel|fsde|fslist|fslis|fsli|fsnode|fsnod|fsno|fsplot|fsplo|fspl|fssect|fssec|fsse|fsum|ftcalc|ftcal|ftca|ftran|ftra|ftsize|ftsiz|ftsi|ftwrite|ftwrit|ftwri|ftwr|fvmesh|fvmes|fvme|gap|gapf|gapfinish|gaplist|gaplis|gapli|gapl|gapmerge|gapmerg|gapmer|gapme|gapm|gapopt|gapop|gapo|gapplot|gapplo|gappl|gapp|gauge|gaug|gcgen|gcge|genop?t?|geome?t?r?y?|gp|gpdele|gpdel|gpde|gplist|gplis|gpli|gplot|gplo|grp|gsum|harfrq|harfr|harf|help|helpdisp|hemiopt|hemiop|hemio|hemi|hfsweep|hfswee|hfswe|hfsw|hmagsolv|hmagsol|hmagso|hmags|hmag|hpgl|hptcreate|hptcreat|hptcrea|hptcre|hptcr|hptc|hptdelete|hptdelet|hptdele|hptdel|hptde|hptd|hrcplx|hrcpl|hrcp|hrexp|hrex|hropt|hrop|hrout|hrou|ic|icdele|icdel|icde|ice|icedele|icedel|icede|iced|icelist|icelis|iceli|icel|iclist|iclis|icli|iclwid|iclwi|iclw|icscale|icscal|icsca|icsc|igesin|igesout|imagin|imagi|imag|immed|imme|impd|inres|inre|inrtia|inrti|inrt|int1|intsrf|intsr|ints|ioptn|iopt|irlf|irlist|irlis|irli|isfile|jpeg|k|katt|kbc|kbetw|kbet|kcalc|kcal|kcenter|kcente|kcent|kcen|kclear|kclea|kcle|kdele|kdel|kdist|kdis|kesize|kesiz|kesi|keyopt|keyop|keyo|keypts|keypt|keyp|keyw|kfill|kfil|kgen|kl|klist|klis|kmesh|kmes|kmodif|kmodi|kmod|kmove|kmov|knode|knod|kplot|kplo|kpscale|kpscal|kpsca|kpsc|krefine|krefin|krefi|kref|kscale|kscal|ksca|kscon|ksco|ksel|ksll|ksln|ksum|ksymm|ksym|ktran|ktra|kuse|kwpave|kwpav|kwpa|kwplan|kwpla|kwpl|l|l2ang|l2an|l2tan|l2ta|lang|larc|larea|lare|large|larg|latt|layer|layerp26|laylist|laylis|layli|layl|layplot|layplo|laypl|layp|lcabs|lcab|lcase|lcas|lccalc|lccat|lcdef|lcde|lcfact|lcfac|lcfa|lcfile|lcfil|lcfi|lclear|lclea|lcle|lcomb|lcom|lcoper|lcope|lcop|lcsel|lcse|lcsl|lcsum|lcsu|lcwrite|lcwrit|lcwri|lcwr|lczero|lczer|lcze|ldele|ldel|ldiv|ldrag|ldra|ldread|lesiz?e?|lextnd|lfillt|lfsurf|lgen|lglue|lgwrite|lina|line|lines|linl|linp|linv|llist|llis|lmatrix|lmatri|lmatr|lmat|lmesh|lmes|lncollapse|lncollaps|lncollap|lncolla|lncoll|lncol|lnco|lndetach|lndetac|lndeta|lndet|lnde|lnfill|lnfil|lnfi|lnmerge|lnmerg|lnmer|lnme|lnsplit|lnspli|lnspl|lnsp|lnsrch|lnsrc|lnsr|local|loca|lovlap|lovla|lovl|lplot|lplo|lptn|lrefine|lrefin|lrefi|lref|lreverse|lrevers|lrever|lreve|lrev|lrotat|lrota|lrot|lsba|lsbl|lsbv|lsbw|lsclear|lsclea|lscle|lscl|lsdele|lsdel|lsde|lsel|lsla|lslk|lsoper|lsope|lsop|lsread|lsrea|lsre|lsscale|lsscal|lssca|lssc|lssolve|lssolv|lssol|lsso|lstr|lsum|lswrite|lswrit|lswri|lswr|lsymm|lsym|ltan|ltran|ltra|lumpm|lump|lvscale|lvscal|lvsca|lvsc|lwplan|lwpla|lwpl|m|magopt|magop|mago|magsolv|magsol|magso|mags|master|maste|mast|mat|mater|mate|mcheck|mchec|mche|mdamp|mdam|mdele|mdel|memm|meshing|meshin|meshi|mesh|mgen|miter|mite|mlist|mlis|mmf|mode|modmsh|modms|modm|modopt|modop|modo|monitor|monito|monit|moni|mopt|move|mp|mpamod|mpamo|mpam|mpchg|mpch|mpdata|mpdat|mpda|mpdele|mpdel|mpde|mpdres|mpdre|mpdr|mplist|mplis|mpli|mpmod|mpmo|mpplot|mpplo|mppl|mpread|mprea|mpre|mprint|mprin|mpri|mptemp|mptem|mpte|mptgen|mptge|mptg|mptres|mptre|mptr|mpundo|mpund|mpun|mpwrite|mpwrit|mpwri|mpwr|msadv|msad|msave|msav|mscap|msca|msdata|msdat|msda|mshape|mshap|msha|mshcopy|mshcop|mshco|mshc|mshkey|mshke|mshk|mshmid|mshmi|mshm|mshpattern|mshpatter|mshpatte|mshpatt|mshpat|mshpa|mshp|msmeth|msmet|msme|msmir|msmi|msnomf|msnom|msno|msprop|mspro|mspr|msquad|msqua|msqu|msrelax|msrela|msrel|msre|mssolu|mssol|msso|msspec|msspe|mssp|msterm|mster|mste|msvary|msvar|msva|mxpand|mxpan|mxpa|n|nang|ncnv|ndele|ndel|ndist|ndis|ndsurf|ndsur|ndsu|neqit|nforce|ngen|nkpt|nldiag|nlgeom|nlist|nlog|nlopt|nmodif|nmodi|nmod|nocolor|nocolo|nocol|noco|nodes|node|noorder|noorde|noord|noor|nplot|nplo|nprint|nprin|npri|nread|nrea|nrefine|nrefin|nrefi|nref|nrlsum|nropt|nrota?t?|nrrang|nscale|nscal|nsca|nsel|nsla|nsle|nslk|nsll|nslv|nsmooth|nsmoot|nsmoo|nsmo|nsol|nsort|nsor|nstore|nstor|nsto|nsubst|nsubs|nsub|nsvr|nsym|numcmp|numcm|numc|numexp|numex|nume|nummrg|numoff|numstr|numvar|nusort|nusor|nuso|nwpave|nwpav|nwpa|nwplan|nwpla|nwpl|nwrite|nwrit|nwri|omega|omeg|opadd|opad|opanl|opan|opclr|opcl|opdata|opdat|opda|opdel|opde|opeqn|opeq|operate|operat|opera|oper|opexe|opex|opfact|opfac|opfa|opfrst|opfrs|opfr|opgrad|opgra|opgr|opkeep|opkee|opke|oplfa|oplf|oplgr|oplg|oplist|oplis|opli|oploop|oploo|oplo|oplsw|opls|opmake|opmak|opma|opncontrol|opncontro|opncontr|opncont|opncon|opnco|opnc|opprnt|opprn|oppr|oprand|opran|opra|opresu|opres|opre|oprfa|oprf|oprgr|oprg|oprsw|oprs|opsave|opsav|opsa|opsel|opse|opsubp|opsub|opsu|opsweep|opswee|opswe|opsw|optype|optyp|opty|opuser|opuse|opus|opvar|opva|outopt|outop|outo|outpr|outp|outres|outre|outr|padele|padel|pade|paget|page|paput|papu|paresu|pares|pare|parres|parre|parr|parsav|parsa|pars|partsel|partse|parts|part|pasave|pasav|pasa|path|pcalc|pcal|pcirc|pcir|pconv|pcon|pcorro|pcorr|pcor|pcross|pcros|pcro|pdef|pdot|pdrag|pdra|pemopts|pemopt|pemop|pemo|perbc2d|perbc2|perbc|perb|peri|pexclude|pexclud|pexclu|pexcl|pexc|pfact|pfac|pfluid|pflui|pflu|pgap|physics|physic|physi|phys|pinclude|pinclud|pinclu|pincl|pinc|pinsul|pinsu|pins|pipe|pivcheck|pivchec|pivche|pivch|pivc|planewave|planewav|planewa|planew|plane|plan|plconv|plcon|plco|plcplx|plcpl|plcp|plcrack|plcrac|plcra|plcr|pldisp|pldis|pldi|plesol|pleso|ples|pletab|pleta|plet|plf2d|plf2|plls|plnsol|plnso|plns|plot|plotting|plpagm|plpath|plsect|plsec|plse|pltime|pltim|plti|pltrac|pltra|pltr|plvar|plvaropt|plvect|plvec|plve|plvfrc|plvfr|plvf|pmap|pmeth|pmet|pmgtran|pmgtra|pmgtr|pmgt|pmopts|pmopt|pmop|point|poin|poly|popt|portopt|portop|porto|port|powerh|power|powe|ppath|ppat|pplot|pplo|pprange|pprang|ppran|ppra|ppres|ppre|prange|prang|pran|prconv|prcon|prco|prcplx|prcpl|prcp|precision|precisio|precisi|precis|preci|prec|pred|prerr|prer|presol|preso|pres|pretab|preta|pret|pri2|prim|print|prin|prism|pris|priter|prite|prit|prnld|prnl|prnsol|prnso|prns|prod|prpath|prpat|prpa|prrfor|prrfo|prrf|prrsol|prrso|prrs|prsect|prsec|prse|prssol|prsso|prss|prtime|prtim|prti|prvar|prvaropt|prvect|prvec|prve|pscr|psdcom|psdco|psdc|psdfrq|psdfr|psdf|psdres|psdre|psdr|psdspl|psdsp|psds|psdunit|psduni|psdun|psdu|psdval|psdva|psdv|psdwav|psdwa|psdw|psel|psolve|psolv|psol|pspec|psprng|psprn|pstres|ptemp|ptsmesh|ptxy|punit|pvect|qdval|qdva|qfact|qfac|qsopt|qsop|quad|quot|r|race|radopt|radop|rado|rall|rappnd|rappn|rapp|rate|rbe3|rcon|rdele|rdel|real|realvar|rectng|rectn|rect|reduce|reduc|redu|reflcoef|reflcoe|reflco|reflc|refl|reorder|reorde|reord|reor|rescontrol|rescontro|rescontr|rescont|rescon|resco|resc|reset|rese|resp|resume|resum|resu|rexport|rexpor|rexpo|rexp|rfilsz|rfils|rfil|rforce|rforc|rfor|rigid|rigi|rimport|rimpor|rimpo|rimp|riter|rite|rlist|rlis|rmemry|rmemr|rmem|rmodif|rmodi|rmod|rmore|rmor|rock|rpoly|rpol|rpr4|rprism|rpris|rpri|rpsd|rspeed|rspee|rspe|rstat|rsta|rsys|rthick|rthic|rthi|rtimst|rtims|rtim|run|rwfrnt|rwfrn|rwfr|sabs|sadd|sallow|sallo|sall|sarplot|sarplo|sarpl|sarp|save|sbclist|sbclis|sbcli|sbcl|sbctran|sbctra|sbctr|sbct|sdelete|sdelet|sdele|sdel|se|seccontrols|secdata|secnum|secoffset|secplot|secplo|secpl|secp|secread|secrea|secre|secr|sectype|sectyp|secty|sect|secwrite|secwrit|secwri|secwr|secw|sed|sedlist|sedlis|sedli|sedl|seexp|seex|selist|selis|seli|selm|senergy|senerg|sener|sene|seopt|seop|sesymm|sesym|sesy|set|setran|setra|setr|sexp|sf|sfa|sfact|sfac|sfadele|sfadel|sfade|sfad|sfalist|sfalis|sfali|sfal|sfbeam|sfbea|sfbe|sfcalc|sfcal|sfca|sfcum|sfcu|sfdele|sfdel|sfde|sfe|sfedele|sfedel|sfede|sfed|sfelist|sfelis|sfeli|sfel|sffun|sffu|sfgrad|sfgra|sfgr|sfl|sfldele|sfldel|sflde|sfld|sflist|sflis|sfli|sfllist|sfllis|sflli|sfll|sfscale|sfscal|sfsca|sfsc|sftran|sftra|sftr|shell|shel|shpp|slist|slis|slpplot|slpplo|slppl|slpp|slsplot|slsplo|slspl|slsp|small|smal|smax|smbody|smbod|smbo|smcons|smcon|smco|smfor|smfo|smin|smrtsize|smrtsiz|smrtsi|smrts|smrt|smsurf|smsur|smsu|smult|smul|solcontrol|solu|soluopt|solve|sort|source|sour|space|sparm|spar|spcnod|spctemp|spec|sph4|sph5|sphere|spher|sphe|spline|splin|spli|spoint|spoin|spoi|spopt|spop|spread|sprea|spre|sptopt|sptop|spto|sqrt|srcs|srss|ssln|sstif|ssti|ssum|stat|stef|store|stor|subopt|subop|subo|subset|subse|subs|sumtype|sumtyp|sumty|sumt|sv|svtyp|svty|tallow|tallo|tall|tb|tbcopy|tbcop|tbco|tbdata|tbdat|tbda|tbdele|tbdel|tbde|tble|tblist|tblis|tbli|tbmodif|tbmodi|tbmod|tbmo|tbplot|tbplo|tbpl|tbpt|tbtemp|tbtem|tbte|tchg|tee|term|tiff|time|timerange|timint|timin|timi|timp|tintp|tint|tocomp|tocom|toco|todef|tode|toexe|toex|toffst|toffs|toff|tofreq|tofre|tofr|tograph|tograp|togra|togr|tolist|tolis|toli|toloop|toloo|tolo|toper|tope|toplot|toplo|topl|toprint|toprin|topri|topr|torq2d|torqc2d|torqsum|torus|toru|tostat|tosta|tost|total|tota|totype|totyp|toty|tovar|tova|trans|transfer|tref|trnopt|trnop|trno|trpdel|trpde|trpd|trplis|trpli|trpl|trpoin|trpoi|trpo|trtime|trtim|trti|tshap|tsha|tsres|tsre|tunif|tuni|tvar|type|tzamesh|tzames|tzame|tzam|tzdele|tzdel|tzde|tzegen|tzege|tzeg|uimp|undo|upcoord|upcoor|upcoo|upco|upgeom|upgeo|upge|usrcal|usrca|usrc|v|va|vadd|valve|valv|vardel|varde|vard|varnam|varna|varn|vatt|vclear|vclea|vcle|vcross|vcros|vcro|vcvfill|vcvfil|vcvfi|vcvf|vddam|vdda|vdele|vdel|vdgl|vdot|vdrag|vdra|vext|vfcalc|vfcal|vfca|vfopt|vfop|vfquery|vfquer|vfque|vfqu|vgen|vget|vglue|vglu|vimp|vinp|vinv|vlist|vlis|vlscale|vlscal|vlsca|vlsc|vmesh|vmes|voffst|voffs|voff|volumes|volume|volum|volu|vovlap|vovla|vovl|vplot|vplo|vptn|vput|vrotat|vrota|vrot|vsba|vsbv|vsbw|vsel|vsla|vsum|vsweep|vswee|vswe|vsymm|vsym|vtran|vtra|vtype|vtyp|waves|wave|werase|weras|wera|wfront|wfron|wfro|wmid|wmore|wmor|wpave|wpav|wpcsys|wpcsy|wpcs|wplane|wplan|wpla|wpoffs|wpoff|wpof|wprota|wprot|wpro|wpstyl|wpsty|wpst|write?|wsort|wsor|wstart|wstar|wsta|xvar|xvaropt)\\b"
+			"match": "^\\s*(?i)(aadd|aatt|\\*abbr|abbres|abbsav|abs|accat|acel|aclear|adapt|add|addam|adele|adgl|adrag|aesize|afillt|aflist|afsurf|\\*afun|agen|aglue|aina|ainp|ainv|al|alist|alls(el)?|alpfill|alphad|amap|amesh|/an3d|ancntr|ancut|andata|andscl|andyna|/anfile|anflow|/angle|anharm|anim|anisos|anmode|/anno(t)?|anorm|antime|antype|/anum|aoffst|aovlap|aplot|append|aptn|arclen|arcollapse|arctrm|ardetach|areas|arefine|areverse|arfill|armerge|arotat|arscale|arsplit|arsym|asba|asbl|asbv|asbw|\\*ask|askin|asll|aslv|/assign|asub|asum|atan|atran|atype|/auto|autots|/aux3|avprin|avres|/axlab|/batch|beam188|beam189|bellow|bend|betad|bf|bfa|bfadele|bfalist|bfcum|bfdele|bfe|bfecum|bfedele|bfelist|bfescal|bfint|bfk|bfkdele|bfklist|bfl|bfldele|bflist|bfllist|bfscale|bftran|bfunif|bfv|bfvdele|bfvlist|bioopt|biot|blc4|blc5|block|bool|boptn|branch|bsplin|btol|bucopt|c\\*\\*\\*|calc|cbdof|cdread|cdwrite|ce|cecmod|cecyc|cedele|ceintf|celist|center|ceqn|cerig|cesgen|cfact|\\*cfclos|\\*cfopen|\\*cfwrite|cgloc|cgomga|check|chkmsh|circle|/clabel|/clear|clocal|/clog|clog|clrmshln|cm|/cmap|cmatrix|cmdele|cmedit|cmgrp|cmlist|cmplot|cnvtol|/color|/com|compress|con4|cone|/config|conjug|/contour|/copy|couple|coval|cp|cpcyc|cpdele|cpintf|/cplane|cplgen|cplist|cpngen|cpsgen|cqc|crplim|cs|cscir|csdele|cskp|cslist|cswpla|csys|/ctype|curr2d|cutcontrol|/cval|cvar|/cwd|cycgen|/cycexpand|cyclic|cycphase|cycsol|cyl4|cyl5|cylind|d|da|dadele|dalist|damorph|data|datadef|dcgomg|dcum|ddele|ddsopt|deact|define|\\*del|/delete|delete|deltim|demorph|deriv|desize|desol|detab|/devdisp|/device|dig|digit|\\*dim|display|/dist|dk|dkdele|dklist|dl|dldele|dlist|dllist|dmove|dmprat|dnsol|dof|dofsel|domega|/dscale|dscale|dset|dsum|dsurf|dsym|dsys|dtran|dump|/dv3d|dvmorph|dynopt|e|ealive|edadapt|edasmp|edbound|edbvis|edbx|edcadapt|edcgen|edclist|edcontact|edcpu|edcrb|edcsc|edcts|edcurve|eddamp|eddc|eddrelax|eddump|edele|edenergy|edfplot|a|/edge|edhgls|edhist|edhtime|edint|edipart|edlcs|edload|edmp|ednb|edndtsd|ednrot|edopt|edout|edpart|edpc|edpl|edrc|edrd|edread|edri|edrst|edrun|edshell|edsolv|edsp|edstart|edterm|edtp|edvel|edweld|edwrite|/efacet|egen|eintf|ekill|elem|elist|emagerr|emf|emid|emis|emodif|emore|emsym|emtgen|emunit|en|engen|enorm|ensym|eorient|eplo(t)?|eqslv|/erase|erase|eread|erefine|eresx|ernorm|errang|/eshape|esize|esla|esll|esln|eslv|esol|esort|essolv|estif|esurf|esym|esys|et|etable|etchg|etdele|etlist|etwrite|etype|eusort|\\*eval|ewrite|exp|/expand|expand|expass|expsol|extopt|extrem)\\b"
+		},
+
+		"keywords_f_j": {
+			"name": "keyword.command.apdl",
+			"match": "^\\s*(?i)(f|/facet|fatigue|fcum|/fdele|fdele|fe|febody|fecons|fefor|felist|fesurf|file|fileaux2|fileaux3|filedisp|fill|filldata|/fil(name)?|fitem|fk|fkdele|fklist|fl|flange|fldata|fldata1|fldata10|fldata11|fldata12|fldata13|fldata14|fldata15|fldata16|fldata17|fldata18|fldata19|fldata2|fldata20|fldata20a|fldata21|fldata22|fldata23|fldata24|fldata24a|fldata24b|fldata24c|fldata24d|fldata25|fldata26|fldata27|fldata28|fldata29|fldata3|fldata30|fldata31|fldata32|fldata33|fldata34|fldata35|fldata36|fldata4|fldata4a|fldata5|fldata6|fldata7|fldata8|fldata9|flist|fllist|flocheck|flotran|flread|flst|fluxv|fmagbc|fmagsum|/focus|for2d|force|form|/format|fp|fplist|freq|fs|fscale|fsdele|fslist|fsnode|fsplot|fssect|fsum|ftcalc|ftran|ftsize|ftwrite|/ftype|fvmesh|gap|gapf|gapfinish|gaplist|gapmerge|gapopt|gapplot|gauge|gcgen|/gcmd|genopt|geom|geometry|\\*get|/gfile|/gformat|/gline|/go|\\*go|/golist|/gopr|gp|gpdele|gplist|gplot|/graphics|/gresume|/grid|/gropt|grp|/grtyp|/gsave|/gst|gsum|/gthk|harfrq|/header|help|helpdisp|hemiopt|hfeigopt|hfnear|hfport|hfscat|hfsweep|hfsym|hmagsolv|hpgl|hptcreate|hptdelete|hrexp|hropt|hrout|ic|icdele|ice|icedele|icelist|iclist|/iclwid|/icscale|icvfrc|igesin|igesout|imagin|immed|impd|/input|inres|inrtia|int1|intsrf|ioptn|irlf|irlist|isfile|jpeg)\\b"
+		},
+		"keywords_k_n": {
+			"name": "keyword.command.apdl",
+			"match": "^\\s*(?i)(k|katt|kbc|kbetw|kcalc|kcenter|kclear|kdele|kdist|kesize|keyopt|keypts|keyw|kfill|kgen|kl|klist|kmesh|kmodif|kmove|knode|kplot|kpscale|krefine|kscale|kscon|ksll|ksln|ksum|ksymm|ktran|kuse|kwpave|kwplan|l|l2ang|l2tan|lang|/larc|larc|larea|large|latt|layer|layerp26|laylist|layplot|lcabs|lcase|lccalc|lccat|lcdef|lcfact|lcfile|lclear|lcomb|lcoper|lcsel|lcsl|lcsum|lcwrite|lczero|ldele|ldiv|ldrag|ldread|lesize|lextnd|lfillt|lfsurf|lgen|lglue|lgwrite|/light|lina|/line|line|lines|linl|linp|linv|\\*list|list|llist|lmatrix|lmesh|lncollapse|lndetach|lnfill|lnmerge|lnsplit|lnsrch|local|lovlap|lplot|lptn|lrefine|lreverse|lrotat|lsba|lsbl|lsbv|lsbw|lsclear|lsdele|lsla|lslk|lsoper|/lspec|lsread|lsscale|lssolve|lstr|lsum|lswrite|/lsymbol|lsymm|ltan|ltran|lumpm|lvscale|lwplan|m|magopt|magsolv|master|mat|mater|mcheck|mdamp|mdele|memm|/menu|meshing|\\*mfouri|\\*mfun|mgen|miter|mlist|mmf|mode|modmsh|modopt|monitor|\\*mooney|\\*moper|mopt|move|mp|mpamod|mpchg|mpcopy|mpdata|mpdele|mpdres|/mplib|mplist|mpmod|mpplot|mpread|mprint|mptemp|mptgen|mptres|mpundo|mpwrite|/mrep|msadv|msave|mscap|msdata|mshape|mshcopy|mshkey|mshmid|mshpattern|msmeth|msmir|msnomf|msprop|msquad|msrelax|mssolu|msspec|/mstart|msterm|msvary|mxpand|n|nang|ncnv|ndele|ndist|ndsurf|neqit|/nerr|nforce|ngen|nkpt|nldiag|nlgeom|nlist|nlog|nlopt|nmodif|nocolor|nodes|/noerase|/nolist|noorder|/nopr|/normal|nplo(t)?|nprint|nread|nrefine|nrlsum|nropt|nrotat|nrrang|nscale|nsl[aeklv]?|nsmooth|nsol|nsort|nstore|nsubst|nsvr|nsym|/number|numcmp|numexp|nummrg|numoff|numstr|numvar|nusort|nwpave|nwplan|nwrite)\\b"
+		},
+		"keywords_o_p": {
+			"name": "keyword.command.apdl",
+			"match": "^\\s*(?i)(omega|opadd|opanl|opclr|opdata|opdel|opeqn|operate|opexe|opfact|opfrst|opgrad|opkeep|oplfa|oplgr|oplist|oploop|oplsw|opmake|opncontrol|opprnt|oprand|opresu|oprfa|oprgr|oprsw|opsave|opsel|opsubp|opsweep|optype|opuser|opvar|outopt|outpr|/output|outres|padele|/page|paget|paput|parres|parsav|partsel|path|/pbc|/pbf|pcalc|pcirc|/pcircle|pconv|/pcopy|pcorro|pcross|pdanl|pdbbm|pdccd|pdcdf|pdclr|pdcmat|pdcorr|pddmcs|pdef|pdexe|pdhist|pdinqr|pdmeth|pdot|pdpinv|pdplot|pdprob|pdrag|pdresu|pdropt|/pds|pdsave|pdscat|pdsens|pdshis|pduser|pdvar|pdwrite|pemopts|perbc2d|pexclude|pfact|pfluid|pgap|physics|/pice|pinclude|pinsul|pipe|plconv|plcplx|plcrack|pldisp|plesol|pletab|plf2d|plhffar|plls|plnsol|/plopts|plot|plotting|plpagm|plpath|plsect|pltime|pltrac|plvar|plvaropt|plvect|plvfrc|plwave|/pmacro|pmap|/pmeth|pmeth|pmgtran|pmlopt|pmopts|/pmore|/pnum|point|poly|/polygon|popt|powerh|ppath|pplot|pprange|ppres|prange|prconv|prcplx|precision|pred|prerr|presol|pretab|prets179|prhffar|pri2|prim|print|prism|priter|prnld|prnsol|prod|prpath|prrsol|prsect|prtime|prvar|prvaropt|prvect|pscr|psdcom|psdfrq|psdgraph|psdres|psdspl|psdunit|psdval|psdwav|/psearch|/psf|psmesh|psolve|/pspec|pspec|psprng|/pstatus|pstres|/psymb|ptemp|ptxy|punit|pvect|/pwedge)\\b"
+		},
+
+		"keywords_q_s": {
+			"name": "keyword.command.apdl",
+			"match": "^\\s*(?i)(qdval|qfact|qsopt|quad|quot|r|race|radopt|rall|rappnd|rate|/ratio|rbe3|rcon|rdele|real|realvar|rectng|reduce|reflcoef|/rename|reorder|/replot|rescontrol|/reset|reset|resp|resu(me)?|rexport|rfilsz|rforce|/rgb|rigid|rimport|riter|rlist|rmemry|rmodif|rmore|rock|rpoly|rpr4|rprism|rpsd|rsfit|rspeed|rsplot|rsprnt|rssims|rstat|rsys|rthick|rtimst|run|rwfrnt|\\~satin|sabs|sadd|sallow|sarplot|save|sbclist|sbctran|sdelete|se|secdata|secnum|secoffset|secplot|secread|sectype|secwrite|sed|sedlist|seexp|/seg|selist|selm|senergy|seopt|sesymm|\\*set|set|setran|sexp|sf|sfa|sfact|sfadele|sfalist|sfbeam|sfcalc|sfcum|sfdele|sfe|sfedele|sfelist|sffun|sfgrad|sfl|sfldele|sflist|sfllist|sfscale|sftran|/shade|shell|/showdisp|/shrink|slist|slpplot|slsplot|small|smax|smbody|smcons|smfor|smin|smooth|smrtsize|smsurf|smult|solcontrol|solu|soluopt|solve|sort|source|space|sparm|spcnod|spctemp|spec|sph4|sph5|sphere|spline|spoint|spopt|spread|sptopt|sqrt|srss|/sscale|ssln|sstif|ssum|stabilize|stat|/stat(us)?|\\*stat(us)?|stef|/stitle|store|subopt|subset|sumtype|sv|svtyp|/syp|/sys)\\b"
+		},
+
+		"keywords_t_z": {
+			"name": "keyword.command.apdl",
+			"match": "^\\s*(?i)(tallow|tb|tbcopy|tbdata|tbdele|tble|tblist|tbmodif|tbplot|tbpt|tbtemp|tchg|/tee|tee|term|tiff|time|timerange|timint|timp|tintp|/title|/tlabel|tocomp|todef|toexe|toffst|tofreq|tograph|tolist|toloop|\\*toper|toplot|toprint|torq2d|torqc2d|torqsum|torus|tostat|total|totype|tovar|trans|transfer|\\*tread|tref|/triad|/trlcy|trnopt|trpdel|trplis|trpoin|trtime|tshap|/tspec|tsres|tunif|tvar|/txtre|/type|type|tzamesh|tzdele|tzegen|/ucmd|/ui|uimp|/uis|\\*ulib|undelete|undo|/units|upcoord|upgeom|\\*use|/user|usrcal|v|v2dopt|va|\\*vabs|vadd|valve|vardel|varnam|vatt|vclear|\\*vcol|/vcone|vcross|\\*vcum|vcvfill|vddam|vdele|vdgl|vdot|vdrag|\\*vedit|vext|\\*vfact|vfcalc|\\*vfill|vfopt|vfquery|\\*vfun|vgen|\\*vget|vget|vglue|/view|vimp|vinp|vinv|\\*vitrp|\\*vlen|vlist|vlscale|\\*vmask|vmesh|voffst|volumes|\\*voper|vovlap|\\*vplot|vplot|vptn|\\*vput|vput|vrotat|vsba|vsbv|vsbw|/vscale|\\*vscfun|vsla|\\*vstat|vsum|vsweep|vsymm|vtran|vtype|/vup|/wait|waves|werase|wfront|/window|wmore|wpave|wpcsys|wplane|wpoffs|wprota|wpstyl|write|wsort|wstart|/xfrm|/xrange|xvar|xvaropt|/yrange|/zoom|shpp)\\b"
+		},
+
+		"keywords_multiline": {
+			"name": "keyword.multiline.apdl",
+			"match": "^\\s*\\*(?i)(msg|mwrite|vread|vwrite)\\b"
+		},
+
+		"keywords_undocumented": {
+			"name": "keyword.undocumented.apdl",
+			"match": "^\\s*(?i)(outs|keymod|vsle|asle)\\b"
+		},
+
+		"keywords_new": {
+			"name": "keyword.new.apdl",
+			"match": "^\\s*(?i)(bcsoption|debug|/gcolumn|sload)\\b"
+		},
+
+		"keywords_control": {
+			"name": "keyword.control.apdl",
+			"match": "^\\s*\\*(?i)(if|elseif|else|endif|do|dowhile|cycle|exit|enddo|repeat|go)\\b"
+		},
+
+				"keywords_special": {
+			"name": "keyword.special.apdl",
+			"match": "^\\s*\\/(?i)(eof|show|exit|quit)\\b"
+		},
+
+		"keywords_processor": {
+			"name": "keyword.processor.apdl",
+			"match": "^\\s*(?i)(/prep7|/solu|/post1|/post26|/inquire|/opt|/runst|/aux2|/aux12|/aux15|fini(sh)*|\\*create|\\*end)\\b"
 		},
 
 		"elementTypes": {
 			"name": "keyword.element.apdl",
-			"match": "\\b(?i)(beam(3|4|23|24|44|56|161|188|189)|link(1|10|31|34|167|180)|shell(28|41|43|57|61|63|91|93|99|131|132|15|157|163|181|208|209|281)|solid(5|45|46|62|69|70|87|90|92|95|96|97|98|117|122|123|127|128|147|148|164|168|182|183|185|186|187|191|226|227|231|232)|plane(13|25|35|42|53|55|67|75|77|78|82|83|121|145|146|162|182|183|223|230|233))\\b"
+			"match": "\\b(?i)(solid5|link11|plane13|combin14|mass21|plane25|matrix27|fluid29|fluid30|link31|link33|link34|plane35|sourc36|combin37|fluid38|combin39|combin40|infin47|matrix50|plane55|shell61|solid65|link68|solid70|mass71|plane75|plane77|plane78|plane83|solid87|solid90|circu94|solid96|solid98|infin110|infin111|fluid116|plane121|solid122|solid123|circu124|circu125|trans126|fluid129|fluid130|shell131|shell132|fluid136|fluid138|fluid139|rom144|surf151|surf152|surf153|surf154|surf155|surf156|surf157|surf159|link160|beam161|plane162|shell163|solid164|combi165|mass166|link167|solid168|targe169|targe170|targe171|targe172|targe173|conta174|conta175|conta176|conta177|conta178|prets179|link180|shell181|plane182|plane183|mpc184|solid185|solid186|solid187|beam188|beam189|solsh190|inter192|inter193|inter194|inter195|mesh200|follw201|inter202|inter203|inter204|inter205|shell208|shell209|cpt212|cpt213|combi214|cpt215|cpt216|cpt217|fluid218|fluid220|fluid221|plane223|solid236|solid237|plane238|solid239|solid240|hsfld241|hsfld242|surf251|surf252|infin257|reinf264|reinf265|solid272|solid273|solid278|solid279|shell281|solid285|pipe288|pipe289|elbow290|user300)\\b"
+		},
+
+		"macros": {
+			"name": "support.function.apdl",
+			"match": "^\\s*(aaa|aa|abbr|abge|abha|abwa|aext|aext1|aext2|alast|an0|ano3d|an3d|an3d2|an3d3|anno4|anno5|anno5_alt|anno6|anno7|anno7alt|anno7alt2|anno7alt3|anno8|anx|anx7|anx71|anx77|anx7t|anx7_alt|anx8|anxalt|any|any7|any77|any7t|any7_alt|any8|anyalt|apx|apy|apy2|apz|arvn|asa|asle-alt|asm|asn|asps|asr|ass|asu|atx7|avatt|bea188|bea4|bem1|beul_ur_mod|(7)?blast|bnod|bnod2|bnod3|cms|combin40|cosym|cosym2|cplo|csa|css|csu|csym|csym2|cv|cvep|date|dfy73-v1|dfy73|dfy74-v1|dfy74|dfy77|di|di71|di72|di73-h|di73|di74-0|di74-1|di74(sm)?|di75|di76|di77|di78|di9-h|ist|dmat|dsv|dur|dur-halb|e171|e188|eact|ead|eam|ec175|ecr|edns|edreh|eg|eaus|elemp|emma|emmr|emms|emmu|en10025-2|en10025-p355|en10025-s235|en10025|en10025china|en10025secn|ep77-1|ep77|epelem|eplo77|epps|erdlast|erdlast1|erdu|erm|esa|esbt|esc|esc170|escr|esd|ese|esen|esfe|esm|esma|esmu|esn|esna|esr|ess|essh|est|esu|esuc|esum|esvo|eush|euvo|fd|fic|fil4|fil4_alt|fneg|fneg2|fnl|fpos|fpos2|fres|fw|fw0|fwsum|1fwzul|fy18800|gam|gamd|gem|gemd|geolis|gkm|gkmd|glm-kopie|glm|glmd|gnm|gnmd|gsmd|hka|job1|job2|job3|job33|job4|job5|jplot|kocheck|koofs|kos|kos2|kos3|kos4|kos5|kosc|ksl|ksx|ksy|ksz|kszz|kweg|liwi|llfi|log|logx|loko|low|1lru-1|lru|lru2|ls1-v1|ls1|ls2|ls2_alt|ls3|ls99|lsu|lsu1|lsu4|lsu5|lsux|lsuy|lsuz|lx|ly|lz|mat_aus|maxsnum|meigs|mxx|mxx181|mxx188|mxx43|mxx63|ninfo|nlschraub|nlsort|nlsort2|nlsort3|nlsort4|nlsort_x|nlsort_y|nlsort_z|nsl[m]?|numplo|nver|pb|pcds|0phv|phv2|phv2r|phvd|phvdxx|phvdz|phvdzz|phvko|phvt|phvt2|phvts|phvts2|pl7-v7|pl7-v8|pl7|pl7a|pl7text|pl7_ep|pl7_v1|pl7_v2|pl7_v3|pl7_v4|pl7_v5|pl7_v6|pl7_v7|pldefa|plmat|plmat1|plreal|plsige|plsige2|plsige3|plsige4|pltype|plvolu|pl_sw1|pl_sw1_alt|pl_sw1_alt2|pl_sw1_din|prsigi|prsu|pscl|psy|qres|qres2|real_aus|replo|rplo|rr|rsac|rv|s0|schraub|sec_vec|seqvs|sfln|sfn|sg77|sk|spp|spp_alt|ssa|ssenks|ssr|sss|ssu|st|stab|6stab188_neu|sta_aus|sumur|sw2_wa2|sw41|sw41a|sw41b|sw41c|sw42|3sw43-ec|sw43|sw43a|sw43b|sw43c|sw43e|sw43f|sw43x|sw44|sw45-ec|sw45|sw45c|sw45e|sw45i|sw46|sw46a|sw46b|sw46c|sw47|sw47c|sw48|sw48c|sw49-ec|sw49|sw49e|sw50|sw53|sw81|sw82|sw88|sw89|swp|sw_wa|sw_wa2|sw_wa2_sicher|sw_wa3|sw_wa3_sicher|sw_wa4|sw_wa5|sw_wa5_alt|sw_wa5_din|sw_wa5_sicher|sw_wa5_sicher2|taueb-dy|taueb-unten|taueb|taueb_lin|test|test.zip|test_p|test_s|test_ss|tparas|tplot-k|tplot|tsenks|vam|vamd|viiplusy|viiz|viiz2|vsa|vskt|vskt_alt|vsn|vsr|vss|vsu|vv|wax|way|waz|wpon|xx|xxx|xyz|zur)\\b"
 		},
 
 		"numbers": {
@@ -123,14 +210,14 @@
 		},
 
 		"operators": {
-			"name": "constant.operator.apdl",
-			"match": "\\+"
+			"name": "keyword.operator.apdl",
+			"match": "\\+|\\-|\\*|\\/|\\:|\\,|\\%|\\$|\\&|\\="
 		},
 
 		"special": {
 			"name": "invalid.apdl",
 			"match": "\\b(?i)(special\\s*case|to\\s*do|update|verify)\\b"
-		}
+		}		
 
 	},
 
