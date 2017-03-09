@@ -245,7 +245,7 @@
 
 		"operators": {
 			"name": "keyword.operator.apdl",
-			"match": "\\+|\\-|\\*|\\/|\\:|\\,|\\%|\\$|\\&|\\="
+			"match": "\\+|\\-|\\*|\\/|\\:|\\,|\\%|\\$|\\&|\\=|(\\b(?i)(eq|ge|gt|le|lt|and|or|then)\\b)"
 		},
 
 		"special": {
@@ -259,7 +259,7 @@
 		},
 
 		"arguments_custom": {
-			"name": "support.variable.apdl",
+			"name": "storage.custom.apdl",
 			"match": "\\b(?i)(joblk\\d|jst\\d|jobset|arg\\d)\\b"
 		}
 
