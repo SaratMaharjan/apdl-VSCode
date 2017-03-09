@@ -255,7 +255,7 @@
 
 		"notifiers": {
 			"name": "markup.heading.apdl",
-			"match": "\\b(?i)(\\<--.*--\\>|<<<.*>>>|use.*macro|anfang|ende)\\b"
+			"match": "\\s*(?i)(<--.*-->|<<<.*>>>|use.*macro|anfang|ende)"
 		},
 
 		"arguments_custom": {
