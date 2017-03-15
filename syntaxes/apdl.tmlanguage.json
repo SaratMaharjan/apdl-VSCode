@@ -18,6 +18,10 @@
 		},
 
 		{
+			"include": "#eof"
+		},
+
+		{
 			"include": "#string_double"
 		},
 
@@ -210,7 +214,7 @@
 
 		"keywords_special": {
 			"name": "keyword.special.apdl",
-			"match": "^\\s*\\/(?i)(eof|show|exit|quit)\\b"
+			"match": "^\\s*\\/(?i)(show|exit|quit)\\b"
 		},
 
 		"keywords_processor": {
@@ -261,6 +265,12 @@
 		"arguments_custom": {
 			"name": "storage.custom.apdl",
 			"match": "\\b(?i)(joblk\\d|jst\\d|jobset|arg\\d)\\b"
+		},
+
+		"eof": {
+			"name": "comment.line.apdl",
+			"begin": "/eof",
+			"end": "\\z"
 		}
 
 	},
