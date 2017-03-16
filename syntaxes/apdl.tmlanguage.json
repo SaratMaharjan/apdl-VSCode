@@ -101,13 +101,23 @@
 		"string_single": {
 			"name": "string.quoted.single.apdl",
 			"begin": "'",
-			"end": "'"
+			"end": "'",
+			"patterns":[
+				{
+					"include": "#operators"
+				}
+			]
 		},
 
 		"string_double": {
 			"name": "string.quoted.double.apdl",
 			"begin": "\"",
-			"end": "\""
+			"end": "\"",
+			"patterns":[
+				{
+					"include": "#operators"
+				}
+			]
 		},
 
 		"keywords": {
