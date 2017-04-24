@@ -279,7 +279,7 @@
 
 		"eof": {
 			"name": "comment.line.apdl",
-			"begin": "/eof_DISABLED",
+			"begin": "/eof ! use",
 			"end": "\\z"
 		}
 
